@@ -1,4 +1,6 @@
-# Scarlet Cybersecurity Simulation
+# Scarlet: Cloud Cybersecurity Simulation
 
-Monitoring DVWA vulnerabilities with ELK Stack (built with Azure and Ansible) 
+## Cloud Monitoring DVWA vulnerabilities with ELK Stack 
+  - Automated deployment with Ansible
+  - Built in Azure
 
