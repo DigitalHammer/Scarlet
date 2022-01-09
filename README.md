@@ -3,7 +3,10 @@
 Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics 
 
  **Main Objective:** Demonstrate an automated, load balanced ELK stack solution to monitor and log exploits on the Damn Vulnerable Web Application (DVWA)
-   - Built in Azure and automated with Ansible
+   - Built in Azure
+   - Docker containers automated with Ansible
+   - DVWA servers monitored by Elastic's Filebeat and Metricbeat
+   - *Project will be expanded to include more vulnerable applications and more Elastic beats for monitoring*
 
 **SCARLET Network:**
 
@@ -16,7 +19,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Accessing Virtual Machines
 - Building DVWA Servers
 - Building ELK Server
-- Elastic Beats Setup
+- Elastic Beats Setup: Filebeat and Metricbeat
 
 ---
 
@@ -262,7 +265,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 ---
 
-## **Elastic Beats Setup**
+## **Elastic Beats Setup: FIlebeat and Metricbeat**
 - Edit ansible hosts (if needed)
 - Edit ansible configs (if needed)
 - Create ansible playbook(s)
