@@ -142,25 +142,35 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 ## **Building the DVWA Servers**
 Building DVWA Servers
-  - Build VMs 
+  - Build VMs in Azure
   - Update NSG if necessary
-  - Install Docker on JB
+  - Install Docker on JumpBox
   - Pull ansible container
   - Start and attach to container
   - Creat new SSH key
   - Update VMs with SSH key
-  - Update ansible hosts file
+  - Update ansible hosts file with web server VMs' internal IP addresses
   - Update ansible config file
   - Create and run DVWA playbook
-  
+
 ---
 
 ## **Building the ELK Server**
--
+-Building ELK Server
+- Build VM(s)
+- Add SSH key from ansible container
+- Update NSG if necessary
+- Update ansible hosts with new group
+- Create and run playbook
+
 ---
 
 ## **Elastic Beats Setup**
-- 
+- Elastic Beats Setup
+- Edit ansible hosts (if needed)
+- Edit ansible configs (if needed)
+- Create ansible playbook(s)
+- Run playbooks
 ---
 
 ## **How to Use the Ansible Build**
