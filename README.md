@@ -141,13 +141,35 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 
 ## **Building the DVWA Servers**
-- Build VMs in Azure
-- Update NSG if necessary
+- Build one or more virtual machines in Azure
+  - Utilize Azure size stated in `Virtual Machines (5)` section above
+  - Building multiple DVWA servers creates redundancy
+  - Group all servers intended to host DVWA into the same `resource group, virtual network, and availability set`
+  - Do not give them a public IP. The load balancer will provide the public IP to access DVWA over HTTP
+- Update NSG rules if necessary
+  - See rules `Local-to-WebServers` and `JumpBox-to-VNet` under **Network Security Groups** section above
 - Install Docker on JumpBox
+  ```
+  > sudo apt install docker.io
+  > sudo systemctl status docker
+  > sudo systemctl start docker
+  ```
 - Pull ansible container
+  ```
+  > sudo docker pull cyberxsecurity/ansible
+  ```
 - Start and attach to container
-- Creat new SSH key
-- Update VMs with SSH key
+  ```
+  > sudo docker start [container_name]
+  > sudo docker attach [container_name]
+  ```
+- Creat new SSH key while inside Docker container
+  ```
+  > ssh-keygen
+  > cat ~/.ssh/id_rsa.pub
+  ```
+- Copy new SSH key and update DVWA virtual machines in Azure
+  - You can input the SSH key by going into each individual machine and going to the section `Support + troubleshooting` and click on `Reset password`
 - Update ansible hosts file with web server VMs' internal IP addresses
 - Update ansible config file
 - Create and run DVWA playbook
@@ -155,7 +177,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 
 ## **Building the ELK Server**
-- Build VM(s)
+- Build a virtual machine in Azure
 - Add SSH key from ansible container
 - Update NSG if necessary
 - Update ansible hosts with new group
