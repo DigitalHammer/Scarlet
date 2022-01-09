@@ -21,7 +21,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 ---
 
-### **Azure Network Breakdown**
+## **Azure Network Breakdown**
 
 **Azure Resource Group (1):**
 - All Azure resources were created under the same resource group: **ScarletRG**
@@ -81,32 +81,78 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
  
 ---
 
-### Accessing Virtual machines
-- 
+## **Accessing Virtual machines**
+*Note: In this setup, all public IP addresses are dynamic. Unless you have static IPs, you will need to update your network security groups (NSGs) with the public IP address assigned to the respective device at the time of access*
+- **JumpBox:** SSH from local machine
+  
+  | Access From     | Access Type | Allowed IP Address | Protocol (Port) | Purpose | 
+  |----------|---------------------|----------------------|----------------------|----------------------|
+  | Scarlet-JumpBox | Public | Local Machine's Public IP | SSH (22) | Administration |
+  
+  Steps to access via SSH:
+  - Generate SSH key from local machine and updated the VM in Azure
+  - Verify inbound rule is created within NSG (see *Local-to-JumpBox* rule under Network Security Groups)
+  - Example SSH command in GitBash:
+    ```
+    > ssh admin@20.69.167.144
+    ```
+- **DVWA Servers:** SSH from the Docker container inside the JumpBox to access servers administratively or access the Damn Vulnerable Web Application via HTTP in a web browser on local machine
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Scarlet-JumpBox | Yes              | Local Machine's Public IP    |
-| Scarlet-Web1 |  |                      |
-| Scarlet-Web2 |                     |                      |
-| Scarlet-Web3 |                     |                      |
-| ELK-Server |                     |                      |
+  | Access From | Access Type | Allowed IP Address | Protocol (Port) | Purpose |
+  |----------|---------------------|----------------------|----------------------|----------------------|
+  | Scarlet-JumpBox | Internal | 10.0.0.4 | SSH (22) | Administration |
+  | Local Machine | Public | Local Machine's Public IP | HTTP (80) | Access DVWA |
+
+  Steps to access via SSH:
+  - Generate SSH key while attached to Docker container in JumpBox and updated the VM in Azure
+  - Verify inbound rule is created within NSG (see *JumpBox-to-VNet* rule under Network Security Groups)
+  - Example string of commands to connect to server while in JumpBox:
+    ```
+    > sudo docker start [container_name]
+    > sudo docker attach [container_name]
+      > ssh admin@[web.server.internal.ip]
+    ```
+  Steps to access via HTTP:
+    - Verify inbound rule is created within NSG (see *Local-to-WebServers* rule under Network Security Groups)
+    - Input the following URL with the load balancer public IP address:
+      > http://20.69.153.158/setup.php
+
+- **ELK-Server** SSH from the Docker container inside the JumpBox to access servers administratively or access the Kibana Dashboard via HTTP in a web browser on local machine
+
+  | Access From | Access Type | Allowed IP Address | Protocol (Port) | Purpose |
+  |----------|---------------------|----------------------|----------------------|----------------------|
+  | Scarlet-JumpBox | Internal | 10.0.0.4 | SSH (22) | Administration |
+  | Local Machine | Public | Local Machine's Public IP | HTTP (5601) | Access Kibana Dashboard |
+
+  - Generate SSH key while attached to Docker container in JumpBox and updated the VM in Azure
+  - Verify inbound rule is created within NSG (see *JumpBox-to-ELK* rule under Network Security Groups)
+  - Example string of commands to connect to server while in JumpBox:
+    ```
+    > sudo docker start [container_name]
+    > sudo docker attach [container_name]
+      > ssh admin@[elk.server.internal.ip]
+    ```
+
+  Steps to access via HTTP:
+  - Verify inbound rule is created within NSG (see *Local-to-ELK* rule under Network Security Groups)
+  - Input the following URL with the ELK server public IP address:
+    > http://13.48.210.202:5601/app/kibana
 
 ---
 
-### **Building DVWA Servers**
+## **Building the DVWA Servers**
 - 
 ---
 
-### **Building ELK Server**
+## **Building the ELK Server**
 -
 ---
 
-### **Elastic Beats Setup**
+## **Elastic Beats Setup**
 - 
 ---
 
-### **How to Use the Ansible Build**
+## **How to Use the Ansible Build**
 - 
   
 
