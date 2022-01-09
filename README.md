@@ -314,25 +314,33 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
       ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-kibana.png "Scarlet Network Diagram")
 
-    - Save and exit the Metriceat config file
-    
-- Edit ansible configs (if needed)
-- Create ansible playbook(s)
-- Run playbooks
+    - Save and exit the Metricbeat config file
 
----
----
----
-  - Edit config file:
-    - Line #
+- Download and run the Elastic beats playbook 
+  - *Notes:* 
+    - *This example was done with a single playbook for both Filebeat and Metricbeat. These can be done with individual playbooks by keeping the same header and removing the commands of the beat you do not want*
+    - *If you have organized your directories differently, you'll need to modify the source and destination directories in the playbook*
+  - Download the Ansible playbook for the beats:
     ```
-    output.elasticsearch:
-    hosts: ["10.1.0.4:9200"]
-    username: "elastic"
-    password: "changeme"
+    > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Ansible-Playbooks/ansible-playbook-elastic-beats.yml > /etc/ansible/ansible-playbook-elastic-beats.yml
     ```
-    - Line #
+  - Run Elastic beats playbook
     ```
-    setup.kibana:
-    host: "10.1.0.4:5601"
-    ```
+     > ansible-playbook ansible-playbook-elastic-beat.yml
+     ```
+- Verify Kibana is receiving Filebeat logs:
+  - Go to your Kibana Dashboard with your ELK Server public IP address:
+    > http://13.48.210.202:5601/app/kibana
+  - In the Kibana dashboard under `Logs` click on `Add log data`
+    - Click on `System logs`
+    - Scroll down to `Module status` and click on `Check data`
+    - *It will prompt you of a successful or unsuccessful data retreival*
+- Verify Kibana is receiving Metricbeat logs:
+  - Go to your Kibana Dashboard with your ELK Server public IP address:
+    > http://13.48.210.202:5601/app/kibana
+  - In the Kibana dashboard under `Metrics` click on `Add metric data`
+    - Click on `System metrics`
+    - Scroll down to `Module status` and click on `Check data`
+    - *It will prompt you of a successful or unsuccessful data retreival*
+
+
