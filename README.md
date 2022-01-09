@@ -24,10 +24,11 @@ The configuration details of each machine may be found below.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Scarlet-JumpBox | Gateway  | 10.0.0.4   | Ubuntu 18.04 |
+| Scarlet-Web1    | Host DVWA | 10.0.0.9  | Ubuntu 18.04 |
+| Scarlet-Web2    | Host DVWA | 10.0.0.10 | Ubuntu 18.04 |
+| Scarlet-Web3    | Host DVWA | 10.0.0.11 | Ubuntu 18.04 |
+| ELK-Server     | Host ELK Stack | 10.1.0.4 | Ubuntu 18.04 |
 
 ### Accessing Virtual machines
 - 
