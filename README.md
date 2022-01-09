@@ -344,3 +344,12 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
     - *It will prompt you of a successful or unsuccessful data retreival*
 
 
+---
+
+## **Future of the project**
+- SCARLET will be utilized dominantely for training and educational purposes. I intend to use this for security write-ups as I pen test more machines and capture logs and packets in real-time. 
+- **Next additions include:**
+  - More virtual machines with varied vulnerable servers
+    - I will rotate these machines to keep Azure costs down
+  - More monitoring
+    - Packetbeat will be the next monitoring tool to be added
