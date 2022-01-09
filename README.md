@@ -220,11 +220,40 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 ## **Building the ELK Server**
 
-- Build a virtual machine in Azure
-- Add SSH key from ansible container
-- Update NSG if necessary
-- Update ansible hosts with new group
-- Create and run playbook
+- Build one virtual machine in Azure
+  - Utilize Azure size stated in `Virtual Machines (5)` section above
+  - Place VM in the same resource group as all other resources
+  - Use SSH key inside the Ansible container created earlier
+  - The server will be in its own `virtual network`, `network security group` and have a `public IP address`
+- Verify network security group inbound rules have been created
+  - See rules `JumpBox-to-ELK` and `Local-to-ELK` under **Network Security Groups** section above
+- Update ansible hosts with new group name and ELK server IP address
+  - SSH into the JumpBox, then start and attach to the Ansible container
+    ```
+    > ssh admin@20.69.167.144
+      > sudo docker start [container_name]
+      > sudo docker attach [container_name]
+    ```
+  - Open Ansible hosts file in `/etc/ansible/` directory
+    ```
+    > nano /etc/ansible/hosts
+    ```
+  - Input another group name in brackets (in this example `[elk]` is the group name) then list the internal IP address below 
+  - Include `ansible_python_interpreter=/usr/bin/python3` the IP
+  - Example:
+
+    ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-elk.png "Scarlet Network Diagram")
+
+- Create and run ELK playbook
+  - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preference*)
+     ```
+    > nano /etc/ansible/dvwa-playbook.yml
+    ```
+    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file, save, and exit
+  - Run DVWA playbook
+    ```
+     > ansible-playbook dvwa-playbook.yml
+     ```
 
 ---
 
@@ -238,6 +267,4 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ## **How to Use the Ansible Build**
 - 
   
-
-
 
