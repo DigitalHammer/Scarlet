@@ -1,11 +1,35 @@
-# Cloud Cybersecurity Simulation
+# README
+## **Project:** S.C.A.R.L.E.T.
+### Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics 
+<br>
 
-## Cloud-based monitoring of DVWA vulnerabilities with ELK Stack 
-  - Automated deployment with Ansible
-  - Built in Azure
+### **Main Objective:** Demonstrate an automated, load balanced ELK stack solution to monitor and log exploits on the Damn Vulnerable Web Application (DVWA)
+<br>
+
+### SCARLET Network:
 
 ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
 
-## Title
+### This document contains the following details:
+- Description of the Topology
+- Access Policies
+- ELK Configuration
+  - Beats in Use
+  - Machines Being Monitored
+- How to Use the Ansible Build
 
-![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram-title.png "Scarlet Network Diagram")
+### Method
+- 
+
+---
+### *Technologies Used:*
+  - Azure
+  - Docker
+  - Ansible
+  - ELK Stack
+
+
+  
+
+
+
