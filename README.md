@@ -227,6 +227,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   - The server will be in its own `virtual network`, `network security group` and have a `public IP address`
 - Verify network security group inbound rules have been created
   - See rules `JumpBox-to-ELK` and `Local-to-ELK` under **Network Security Groups** section above
+  - Create a VNET Peering if one is not in place between both virtual networks
 - Update ansible hosts with new group name and ELK server IP address
   - SSH into the JumpBox, then start and attach to the Ansible container
     ```
