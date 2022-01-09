@@ -141,7 +141,18 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 
 ## **Building the DVWA Servers**
-- 
+Building DVWA Servers
+  - Build VMs 
+  - Update NSG if necessary
+  - Install Docker on JB
+  - Pull ansible container
+  - Start and attach to container
+  - Creat new SSH key
+  - Update VMs with SSH key
+  - Update ansible hosts file
+  - Update ansible config file
+  - Create and run DVWA playbook
+  
 ---
 
 ## **Building the ELK Server**
