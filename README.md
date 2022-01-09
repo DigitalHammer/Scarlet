@@ -144,7 +144,8 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 *Note: These directions assume previous knowledge of Azure fundamentals and basic Linux command-line skills.*
 - Build one or more virtual machines in Azure
   - Utilize Azure size stated in `Virtual Machines (5)` section above
-  - Building multiple DVWA servers creates redundancy
+    - The sizes listed are minimum requirements to run the server(s)
+  - Building multiple DVWA servers creates redundancy but only one virtual machine is required to get DVWA up and running
   - Group all servers intended to host DVWA into the same `resource group, virtual network, and availability set`
   - Do not give them a public IP. The load balancer will provide the public IP to access DVWA over HTTP
 - Verify network security group inbound rules have been created
@@ -187,13 +188,27 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
     ```
   ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-config-remoteuser.png "Scarlet Network Diagram")
 
-- Create and run DVWA playbook
+- Create and run the DVWA playbook
   - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preferance*)
      ```
     > nano /etc/ansible/dvwa-playbook.yml
     ```
-    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file  -- (*Note: may need to modify the directories within the commands of the provided playbook*)
+    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file, save, and exit
+  - Run DVWA playbook
+    ```
+     > ansible-playbook dvwa-playbook.yml
+     ```
+  
 - Place DVWA servers behind a load balancer
+  - Create a load balancer in the Azure portal
+  - The load balancer needs to be in the same `resource group and location` as the DVWA servers
+  - Give the load balancer a front end IP address
+    - This creates a public IP address so DVWA can be accessed through a browser over HTTP
+  - Create a backend pool and add all DVWA servers to it
+
+- Access DVWA
+  - In a web browser use the following URL with the load balancer frontend IP address:
+    > http://20.69.153.158/setup.php
 
 ---
 
