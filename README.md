@@ -3,30 +3,37 @@
 Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics 
 
  **Main Objective:** Demonstrate an automated, load balanced ELK stack solution to monitor and log exploits on the Damn Vulnerable Web Application (DVWA)
+   - Built in Azure and automated with Ansible
 
 SCARLET Network:
 
 ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
 
-### This document contains the following details:
-- Description of the Topology
-- Access Policies
-- ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
+**This document contains the following details:**
+- Network Breakdown
+- Accessing Virtual Machines
+- Building DVWA Servers
+- Building ELK Server
+- Elastic Beats Setup
 - How to Use the Ansible Build
 
-### Method
+### Network Breakdown
 - 
 
----
-### *Technologies Used:*
-  - Azure
-  - Docker
-  - Ansible
-  - ELK Stack
+### Accessing Virtual machines
+- 
 
+### Building DVWA Servers
+- 
 
+### Building ELK Server
+-
+
+### Elastic Beats Setup
+- 
+
+### How to Use the Ansible Build
+- 
   
 
 
