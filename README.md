@@ -20,6 +20,15 @@ SCARLET Network:
 ### Network Breakdown
 - 
 
+The configuration details of each machine may be found below.
+
+| Name     | Function | IP Address | Operating System |
+|----------|----------|------------|------------------|
+| Jump Box | Gateway  | 10.0.0.4   | Linux            |
+| TODO     |          |            |                  |
+| TODO     |          |            |                  |
+| TODO     |          |            |                  |
+
 ### Accessing Virtual machines
 - 
 
