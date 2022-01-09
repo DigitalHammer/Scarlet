@@ -4,4 +4,4 @@
   - Automated deployment with Ansible
   - Built in Azure
 
-![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram(sm).png "Scarlet Network Diagram")
+![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
