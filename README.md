@@ -7,7 +7,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 **SCARLET Network:**
 
-![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
+![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/network-diagram.png "Scarlet Network Diagram")
 
 ---
 
@@ -141,12 +141,13 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 
 ## **Building the DVWA Servers**
+*Note: These directions assume previous knowledge of Azure fundamentals and basic Linux command-line skills.*
 - Build one or more virtual machines in Azure
   - Utilize Azure size stated in `Virtual Machines (5)` section above
   - Building multiple DVWA servers creates redundancy
   - Group all servers intended to host DVWA into the same `resource group, virtual network, and availability set`
   - Do not give them a public IP. The load balancer will provide the public IP to access DVWA over HTTP
-- Update NSG rules if necessary
+- Verify network security group inbound rules have been created
   - See rules `Local-to-WebServers` and `JumpBox-to-VNet` under **Network Security Groups** section above
 - Install Docker on JumpBox
   ```
@@ -171,12 +172,19 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Copy new SSH key and update DVWA virtual machines in Azure
   - You can input the SSH key by going into each individual machine and going to the section `Support + troubleshooting` and click on `Reset password`
 - Update ansible hosts file with web server VMs' internal IP addresses
+  - The Ansible hosts file is located in: `/etc/ansible/`
+  ```
+  > nano /etc/ansible/hosts
+  ```
+  - Input sever
 - Update ansible config file
 - Create and run DVWA playbook
+- Place DVWA behind a load balancer
 
 ---
 
 ## **Building the ELK Server**
+
 - Build a virtual machine in Azure
 - Add SSH key from ansible container
 - Update NSG if necessary
