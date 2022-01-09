@@ -17,7 +17,6 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Building DVWA Servers
 - Building ELK Server
 - Elastic Beats Setup
-- How to Use the Ansible Build
 
 ---
 
@@ -194,14 +193,15 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-config-remoteuser.png "Scarlet Network Diagram")
 
 - Create and run the DVWA playbook
-  - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preference*)
+  - Create a YAML file in the `/etc/ansible/` directory
      ```
-    > nano /etc/ansible/dvwa-playbook.yml
+    > nano /etc/ansible/ansible-playbook.dvwa.yml
     ```
-    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file, save, and exit
+    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file, save, and exit  
+    - (*Note: change `remote_user` and any directories if your setup is different than the ones in this file*)
   - Run DVWA playbook
     ```
-     > ansible-playbook dvwa-playbook.yml
+     > ansible-playbook ansible-playbook.dvwa.yml
      ```
   
 - Place DVWA servers behind a load balancer
@@ -244,16 +244,20 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
     ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-elk.png "Scarlet Network Diagram")
 
-- Create and run ELK playbook
+- Create and run the ELK playbook
   - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preference*)
      ```
-    > nano /etc/ansible/dvwa-playbook.yml
+    > nano /etc/ansible/ansible-playbook-elk.yml
     ```
-    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file, save, and exit
-  - Run DVWA playbook
+    - Copy and paste this [ELK Playbook](Ansible-Playbooks/ansible-playbook-elk.yml) into the new YAML file, save, and exit
+    - (*Note: change `remote_user` and any directories if your setup is different than the ones in this file*)
+  - Run ELK playbook
     ```
-     > ansible-playbook dvwa-playbook.yml
+     > ansible-playbook ansible-playbook.elk.yml
      ```
+- Access Kibana Dashboard
+  - In a web browser use the following URL with the ELK server public IP address:
+    > http://13.48.210.202:5601/app/kibana
 
 ---
 
@@ -262,9 +266,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Edit ansible configs (if needed)
 - Create ansible playbook(s)
 - Run playbooks
----
 
-## **How to Use the Ansible Build**
-- 
-  
+
+
 
