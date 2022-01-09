@@ -176,6 +176,8 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   ```
   > nano /etc/ansible/hosts
   ```
+  ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-webservers.png "Scarlet Network Diagram")
+
   - Input sever
 - Update ansible config file
 - Create and run DVWA playbook
