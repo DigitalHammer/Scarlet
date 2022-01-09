@@ -17,32 +17,71 @@ SCARLET Network:
 - Elastic Beats Setup
 - How to Use the Ansible Build
 
-### Network Breakdown
-- 
+### **Network Breakdown**
+**Virtual Machines (5):**
+  - 1 Jumpbox - Acts as the gateway to access all servers
+  - 3 Web servers - Used to host DVWA and create redundancy by being placed behind a load balancer
+    - All web servers are placed inside the same availability set and within the same Azure region
+  - 1 ELK server - Provides monitoring of web servers
+    - hosted in a separate virtual network and Azure region than other VMs
 
-The configuration details of each machine may be found below.
+| Name     | Function | IP Address | Operating System | Azure Size |
+|----------|----------|------------|------------------|------------------|
+| Scarlet-JumpBox | Gateway  | 10.0.0.4   | Ubuntu 18.04 | Standard B1s |
+| Scarlet-Web1    | Host DVWA | 10.0.0.9  | Ubuntu 18.04 | Standard B1ms |
+| Scarlet-Web2    | Host DVWA | 10.0.0.10 | Ubuntu 18.04 | Standard B1ms |
+| Scarlet-Web3    | Host DVWA | 10.0.0.11 | Ubuntu 18.04 | Standard B1ms |
+| ELK-Server     | Host ELK Stack | 10.1.0.4 | Ubuntu 18.04 | Standard B2s |
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Scarlet-JumpBox | Gateway  | 10.0.0.4   | Ubuntu 18.04 |
-| Scarlet-Web1    | Host DVWA | 10.0.0.9  | Ubuntu 18.04 |
-| Scarlet-Web2    | Host DVWA | 10.0.0.10 | Ubuntu 18.04 |
-| Scarlet-Web3    | Host DVWA | 10.0.0.11 | Ubuntu 18.04 |
-| ELK-Server     | Host ELK Stack | 10.1.0.4 | Ubuntu 18.04 |
+**Virtual Networks (2):**
+  - One vnet is hosting the "Scarlet network." This consists 
+  - One vnet is hosting the ELK Server
+  - Connected via VNET Peering
+
+| Name     | Network Range | Subnet |
+|----------|----------|------------|
+| Scarlet-Vnet | 10.0.0.0/16  | 10.0.0.0/24
+| ELK-VNet   | 10.10.0.0/16| 10.0.0.0/24
+
+
+
+**Load Balancer**
+- 1 Load Balancer
+
+
+---
+<br>
 
 ### Accessing Virtual machines
 - 
 
-### Building DVWA Servers
-- 
+| Name     | Publicly Accessible | Allowed IP Addresses |
+|----------|---------------------|----------------------|
+| Scarlet-JumpBox | Yes              | Local Machine's Public IP    |
+| Scarlet-Web1 |  |                      |
+| Scarlet-Web2 |                     |                      |
+| Scarlet-Web3 |                     |                      |
+| ELK-Server |                     |                      |
 
-### Building ELK Server
+---
+<br>
+
+### **Building DVWA Servers**
+- 
+---
+<br>
+
+### **Building ELK Server**
 -
+---
+<br>
 
-### Elastic Beats Setup
+### **Elastic Beats Setup**
 - 
+---
+<br>
 
-### How to Use the Ansible Build
+### **How to Use the Ansible Build**
 - 
   
 
