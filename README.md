@@ -173,23 +173,28 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Copy new SSH key and update DVWA virtual machines in Azure
   - You can input the SSH key by going into each individual machine and going to the section `Support + troubleshooting` and click on `Reset password`
 - Update Ansible hosts file with web server VMs' internal IP addresses
-  - Include `ansible_python_interpreter=/usr/bin/python3` after each webserver ip
   - The Ansible hosts file is located in: `/etc/ansible/`
     ```
     > nano /etc/ansible/hosts
     ```
-  ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-webservers.png "Scarlet Network Diagram")
+  - Input the group name in brackets (in this example `[webservers]` is the group name) then list the internal IP addresses below 
+  - Include `ansible_python_interpreter=/usr/bin/python3` after each IP
+  - Example:
+
+    ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-webservers.png "Scarlet Network Diagram")
 
 - Update Ansible config file with the username of DVWA virtual machines
-  - In this example all the virual machines had the same username
   - The Ansible config file is located in: `/etc/ansible/`
      ```
     > nano /etc/ansible/ansible.cfg
     ```
+  - The syntax is `remote_user = [username]` 
+  - In this example all the virual machines had the same username:
+
   ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-config-remoteuser.png "Scarlet Network Diagram")
 
 - Create and run the DVWA playbook
-  - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preferance*)
+  - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preference*)
      ```
     > nano /etc/ansible/dvwa-playbook.yml
     ```
@@ -202,9 +207,10 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - Place DVWA servers behind a load balancer
   - Create a load balancer in the Azure portal
   - The load balancer needs to be in the same `resource group and location` as the DVWA servers
-  - Give the load balancer a front end IP address
+  - Give the load balancer a `frontend IP address`
     - This creates a public IP address so DVWA can be accessed through a browser over HTTP
-  - Create a backend pool and add all DVWA servers to it
+  - Create a `backend pool` and add all DVWA servers to it
+  - Create a `load balancing rule` and set the `backend pool` and `backendpool` to the newly created ones and set the ports to `80`
 
 - Access DVWA
   - In a web browser use the following URL with the load balancer frontend IP address:
