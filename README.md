@@ -266,8 +266,8 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 
 ## **Elastic Beats Setup: Filebeat and Metricbeat**
-- Download [Filebeat](Elastic-beats-configs/filebeat-configuartion.yml) and [Metricbeat](Elastic-beats-configs/metricbeat-configuartion.yml) configuration files to the Ansible container
-    - SSH into the JumpBox, then start and attach to the Ansible container
+- Download and edit the [Filebeat](Elastic-beats-configs/filebeat-configuartion.yml) configuration file to the Ansible container:
+    - SSH into the JumpBox, then start and attach to the Ansible container (if you aren't already there)
       ```
       > ssh admin@20.69.167.144
        > sudo docker start [container_name]
@@ -275,13 +275,59 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
       ```
   - Download the Filebeat configuration file:
     ```
-    > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/filebeat-configuartion.yml > /etc/ansible/testing/digitalhammer-filebeat-config.yml
+    > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/filebeat-configuartion.yml > /etc/ansible/filebeat-config.yml
     ```
+  - Edit the Filebeat configuration file:
+    ```
+    > nano /etc/ansible/filebeat-config.yml
+    ```
+    - Under the `Elasticsearch Output` section - input the ELK server's internal IP, HTTP Port 9200, and Elastic'c default username and password (*if you have an Elastic account then you can use the username and password you have setup*)
+
+        ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-add-host.png "Scarlet Network Diagram")
+
+    - Under the `Kibana` section - input the ELK server internal IP and HTTP Port 5601
+
+      ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-kibana.png "Scarlet Network Diagram")
+
+
+- Download and edit the [Metricbeat](Elastic-beats-configs/metricbeat-configuartion.yml) configuration file to the Ansible container: 
+  - SSH into the JumpBox, then start and attach to the Ansible container (if you aren't already there)
+      ```
+      > ssh admin@20.69.167.144
+       > sudo docker start [container_name]
+       > sudo docker attach [container_name]
+      ```
   - Download the Metricbeat configuration file:
     ```
     > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/metricbeat-configuartion.yml > /etc/ansible/metricbeat-config.yml
     ```
-
 - Edit ansible configs (if needed)
 - Create ansible playbook(s)
 - Run playbooks
+
+---
+---
+---
+    - Line #1806
+      ```
+      setup.kibana:
+      host: "10.1.0.4:5601"
+      ```
+---
+### Metricbeat: 
+  - /etc/ansible/metricbeat-config.yml
+  - Download metricbeat config file
+    > curl 
+  - Edit config file:
+    - Line #
+    ```
+    output.elasticsearch:
+    hosts: ["10.1.0.4:9200"]
+    username: "elastic"
+    password: "changeme"
+    ```
+    - Line #
+    ```
+    setup.kibana:
+    host: "10.1.0.4:5601"
+    ```
