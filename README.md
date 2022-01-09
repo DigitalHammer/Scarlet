@@ -289,6 +289,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
       ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-kibana.png "Scarlet Network Diagram")
 
+    - Save and exit the Filebeat config file
 
 - Download and edit the [Metricbeat](Elastic-beats-configs/metricbeat-configuartion.yml) configuration file to the Ansible container: 
   - SSH into the JumpBox, then start and attach to the Ansible container (if you aren't already there)
@@ -301,6 +302,20 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
     ```
     > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/metricbeat-configuartion.yml > /etc/ansible/metricbeat-config.yml
     ```
+  - Edit the Metricbeat configuration file:
+    ```
+    > nano /etc/ansible/filebeat-config.yml
+    ```
+    - Under the `Elasticsearch Output` section - input the ELK server's internal IP, HTTP Port 9200, and Elastic'c default username and password (*if you have an Elastic account then you can use the username and password you have setup*)
+
+        ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-add-host.png "Scarlet Network Diagram")
+
+    - Under the `Kibana` section - input the ELK server internal IP and HTTP Port 5601
+
+      ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/filebeat-config-kibana.png "Scarlet Network Diagram")
+
+    - Save and exit the Metriceat config file
+    
 - Edit ansible configs (if needed)
 - Create ansible playbook(s)
 - Run playbooks
@@ -308,16 +323,6 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ---
 ---
 ---
-    - Line #1806
-      ```
-      setup.kibana:
-      host: "10.1.0.4:5601"
-      ```
----
-### Metricbeat: 
-  - /etc/ansible/metricbeat-config.yml
-  - Download metricbeat config file
-    > curl 
   - Edit config file:
     - Line #
     ```
