@@ -1,10 +1,10 @@
 # README
 ## **Project:** S.C.A.R.L.E.T.
-### Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics 
+- Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics 
 
-### **Main Objective:** Demonstrate an automated, load balanced ELK stack solution to monitor and log exploits on the Damn Vulnerable Web Application (DVWA)
+ **Main Objective:** Demonstrate an automated, load balanced ELK stack solution to monitor and log exploits on the Damn Vulnerable Web Application (DVWA)
 
-### SCARLET Network:
+SCARLET Network:
 
 ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
 
