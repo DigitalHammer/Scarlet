@@ -265,12 +265,23 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
 ---
 
-## **Elastic Beats Setup: FIlebeat and Metricbeat**
-- Edit ansible hosts (if needed)
+## **Elastic Beats Setup: Filebeat and Metricbeat**
+- Download [Filebeat](Elastic-beats-configs/filebeat-configuartion.yml) and [Metricbeat](Elastic-beats-configs/metricbeat-configuartion.yml) configuration files to the Ansible container
+    - SSH into the JumpBox, then start and attach to the Ansible container
+      ```
+      > ssh admin@20.69.167.144
+       > sudo docker start [container_name]
+       > sudo docker attach [container_name]
+      ```
+  - Download the Filebeat configuration file:
+    ```
+    > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/filebeat-configuartion.yml > /etc/ansible/testing/digitalhammer-filebeat-config.yml
+    ```
+  - Download the Metricbeat configuration file:
+    ```
+    > curl https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Elastic-beats-configs/metricbeat-configuartion.yml > /etc/ansible/metricbeat-config.yml
+    ```
+
 - Edit ansible configs (if needed)
 - Create ansible playbook(s)
 - Run playbooks
-
-
-
-
