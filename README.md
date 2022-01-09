@@ -171,17 +171,29 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   ```
 - Copy new SSH key and update DVWA virtual machines in Azure
   - You can input the SSH key by going into each individual machine and going to the section `Support + troubleshooting` and click on `Reset password`
-- Update ansible hosts file with web server VMs' internal IP addresses
+- Update Ansible hosts file with web server VMs' internal IP addresses
+  - Include `ansible_python_interpreter=/usr/bin/python3` after each webserver ip
   - The Ansible hosts file is located in: `/etc/ansible/`
-  ```
-  > nano /etc/ansible/hosts
-  ```
+    ```
+    > nano /etc/ansible/hosts
+    ```
   ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-hosts-webservers.png "Scarlet Network Diagram")
 
-  - Input sever
-- Update ansible config file
+- Update Ansible config file with the username of DVWA virtual machines
+  - In this example all the virual machines had the same username
+  - The Ansible config file is located in: `/etc/ansible/`
+     ```
+    > nano /etc/ansible/ansible.cfg
+    ```
+  ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/Resources/Images/ansible-config-remoteuser.png "Scarlet Network Diagram")
+
 - Create and run DVWA playbook
-- Place DVWA behind a load balancer
+  - Create a YAML file in the `/etc/ansible/` directory -- (*Note: directories can be setup based on preferance*)
+     ```
+    > nano /etc/ansible/dvwa-playbook.yml
+    ```
+    - Copy and paste this [DVWA Playbook](Ansible-Playbooks/ansible-playbook-dvwa.yml) into the new YAML file  -- (*Note: may need to modify the directories within the commands of the provided playbook*)
+- Place DVWA servers behind a load balancer
 
 ---
 
