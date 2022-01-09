@@ -10,7 +10,6 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 ![Link an image](https://raw.githubusercontent.com/DigitalHammer/Scarlet/main/network-diagram.png "Scarlet Network Diagram")
 
 ---
-<br>
 
 **This document contains the following details:**
 - Azure Network Breakdown
@@ -21,7 +20,6 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 - How to Use the Ansible Build
 
 ---
-<br>
 
 ### **Azure Network Breakdown**
 
@@ -46,7 +44,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   - All web servers are placed inside the same availability set and within the same Azure region
   - Only one DVWA server is necessary for generating logs, others are for redundancy
 - (1) ELK server - Provides monitoring of web servers
-    - hosted in a separate virtual network and Azure region than JumpBox and DVWA servers
+    - Hosted in a separate virtual network and Azure region than the JumpBox and DVWA servers
 
   | Name     | Function | IP | OS | Azure Size (minimum) |
   |----------|----------|------------|------------------|------------------|
@@ -82,7 +80,6 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 
  
 ---
-<br>
 
 ### Accessing Virtual machines
 - 
@@ -96,22 +93,18 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
 | ELK-Server |                     |                      |
 
 ---
-<br>
 
 ### **Building DVWA Servers**
 - 
 ---
-<br>
 
 ### **Building ELK Server**
 -
 ---
-<br>
 
 ### **Elastic Beats Setup**
 - 
 ---
-<br>
 
 ### **How to Use the Ansible Build**
 - 
