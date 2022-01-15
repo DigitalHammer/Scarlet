@@ -92,7 +92,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   | Local Machine | Public | Local Machine's Public IP | SSH (22) | Administration |
   
   Steps to access via SSH:
-  - Generate SSH key from local machine and updated the VM in Azure
+  - Generate SSH key from local machine and update the VM in Azure
   - Verify inbound rule is created within NSG (see *Local-to-JumpBox* rule under Network Security Groups)
   - Example SSH command in GitBash:
     ```
@@ -126,7 +126,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   | Scarlet-JumpBox | Internal | 10.0.0.4 | SSH (22) | Administration |
   | Local Machine | Public | Local Machine's Public IP | HTTP (5601) | Access Kibana Dashboard |
 
-  - Generate SSH key while attached to Docker container in JumpBox and updated the VM in Azure
+  - Generate SSH key while attached to Docker container in JumpBox and update the VM in Azure
   - Verify inbound rule is created within NSG (see *JumpBox-to-ELK* rule under Network Security Groups)
   - Example string of commands to connect to server while in JumpBox:
     ```
