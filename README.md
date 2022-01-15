@@ -89,7 +89,7 @@ Secure, Cloud-based Automation, Redundancy, Logging, Exploitations, and Tactics
   
   | Access From     | Access Type | Allowed IP Address | Protocol (Port) | Purpose | 
   |----------|---------------------|----------------------|----------------------|----------------------|
-  | Scarlet-JumpBox | Public | Local Machine's Public IP | SSH (22) | Administration |
+  | Local Machine | Public | Local Machine's Public IP | SSH (22) | Administration |
   
   Steps to access via SSH:
   - Generate SSH key from local machine and updated the VM in Azure
